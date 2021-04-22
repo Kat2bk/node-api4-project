@@ -6,8 +6,24 @@ server.use(express.json());
 
 
 server.get('/', (req, res) => {
-    const messageOfTheDay = process.env.MOTD || 'Hello User'
-    res.send({motd: messageOfTheDay, 'Welcome to the API'})
+    const secretIdentity = process.env.CODED || 'Hello User'
+    res.send({ secret: secretIdentity, 'Welcome to the API'})
+})
+
+server.get('/heroes', (req, res) => {
+    const secretHero = process.env.HERO;
+
+    const heroList = [
+        "Batman",
+        "Superman",
+        "Green Lantern",
+        "Aquaman",
+        "Wonder Woman",
+        "Green Arrow"
+    ]
+
+res.status(200).json(heroList)
+    
 })
 
 // error middleware
