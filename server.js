@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const server = express();
 
@@ -22,8 +23,14 @@ server.get('/heroes', (req, res) => {
         "Green Arrow"
     ]
 
-res.status(200).json(heroList)
-
+    if (!process.env.CODED) {
+    res.status(200).json(heroList)
+    } else {
+    res.status(200).json({
+        heroes: heroList,
+        secretIdentity: secretHero
+    })
+    }
 })
 
 // error middleware
