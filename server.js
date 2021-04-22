@@ -7,7 +7,7 @@ server.use(express.json());
 
 server.get('/', (req, res) => {
     const secretIdentity = process.env.CODED || 'Hello User'
-    res.send({ secret: secretIdentity, 'Welcome to the API'})
+    res.send({ secret: secretIdentity, welcome: 'Welcome to the API'})
 })
 
 server.get('/heroes', (req, res) => {
@@ -23,7 +23,7 @@ server.get('/heroes', (req, res) => {
     ]
 
 res.status(200).json(heroList)
-    
+
 })
 
 // error middleware
